@@ -18,11 +18,17 @@ const styles = {
     root: {
         background: "rgba(255,255,255,0.12)"
     },
-    input: {
+    whiteColor: {
         color: "white"
     },
     searchPadding: {
-        padding: '0 1rem',
+        paddingLeft: '1rem',
+    },
+    marginY: {
+        margin: '0.5rem',
+    },
+    searchWidth: {
+        width: '150px',
     }
 };
 
@@ -41,12 +47,12 @@ function Navbar(props) {
         return (
             <Paper component="form" className={classNames(classes.root, classes.searchPadding)}>
                 <InputBase
-                    className={classes.input}
+                    className={classNames(classes.whiteColor, classes.searchWidth)}
                     placeholder="Search city"
                     inputProps={{ 'aria-label': 'search city' }}
                 />
                 <IconButton type="submit" className={classes.iconButton} aria-label="search">
-                    <SearchIcon className={classes.input} />
+                    <SearchIcon className={classes.whiteColor} />
                 </IconButton>
             </Paper>
         );
@@ -56,7 +62,7 @@ function Navbar(props) {
         return (
             <div>
                 <IconButton aria-controls="preferences-menu" aria-haspopup="true" onClick={handleClick}>
-                    <MenuIcon style={{color: "white"}}/>
+                    <MenuIcon className={classes.whiteColor}/>
                 </IconButton>
                 <Menu
                     id="preferences-menu"
@@ -80,26 +86,20 @@ function Navbar(props) {
     }
 
     return (
-        <Container
-            component="div"
-            width={1}
-            style={{height: '64px', padding: '0px'}}
-            position="static">
-            <AppBar>
-                <Container style={{padding: '0px'}} maxWidth="md">
-                    <Toolbar>
-                        <Grid
-                            container
-                            direction="row"
-                            justify="space-between"
-                            alignItems="center">
-                            {searchCityInput()}
-                            {menuButton()}
-                        </Grid>
-                    </Toolbar>
-                </Container>
-            </AppBar>
-        </Container>
+        <AppBar>
+            <Container style={{padding: '0px'}} maxWidth="md">
+                <Toolbar>
+                    <Grid
+                        container
+                        direction="row"
+                        justify="space-between"
+                        alignItems="center">
+                        {searchCityInput()}
+                        {menuButton()}
+                    </Grid>
+                </Toolbar>
+            </Container>
+        </AppBar>
     );
 }
 
