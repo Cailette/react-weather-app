@@ -1,7 +1,7 @@
 import React from 'react';
 import Grid from '@material-ui/core/Grid';
 import ForecastHeader from "./ForecastHeader";
-import ForecastTable from "./ForecastTable";
+import ForecastDays from "./ForecastDays";
 import ForecastChart from "./ForecastChart";
 import Container from "@material-ui/core/Container";
 import { makeStyles } from '@material-ui/core/styles';
@@ -44,7 +44,7 @@ function Body() {
                 alignItems="center"
                 className={classNames(classes.bgColor, classes.bodyPadding, classes.marginB)}>
                 <ForecastHeader/>
-                <ForecastTable/>
+                <ForecastDays/>
                 <ForecastChart/>
             </Container>
         </Grid>
