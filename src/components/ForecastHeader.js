@@ -3,10 +3,10 @@ import Grid from '@material-ui/core/Grid';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
-import {withStyles} from "@material-ui/core/styles";
 import classNames from 'classnames';
+import {makeStyles} from "@material-ui/core/styles";
 
-const styles = {
+const useStyles = makeStyles(theme => ({
     marginB: {
         marginBottom: '1rem',
     },
@@ -14,18 +14,42 @@ const styles = {
         background: "#3949ab",
         color: "white"
     },
-    whiteColor: {
-        color: "white"
-    },
-};
+}));
 
-function ForecastHeader(props) {
-    const { classes } = props;
+function ForecastHeader() {
+    const classes = useStyles();
 
     return (
         <Card className={classNames(classes.marginB, classes.root)}>
             <CardContent>
                 <Grid container spacing={3}>
+                    <Grid item xs={6} md={3}
+                          display="flex"
+                          flexDirection="row">
+                        <Typography  variant="caption">
+                            Sunrise: HH:mm
+                        </Typography>
+                    </Grid>
+                    <Grid item xs={6} md={3}
+                          display="flex"
+                          flexDirection="row">
+                        <Typography variant="caption">
+                            Sunset: HH:mm
+                        </Typography>
+                    </Grid>
+                    <Grid item xs={6} md={3}
+                          flexDirection="row">
+                        <Typography variant="caption">
+                            Latitude: NN.NNNNN
+                        </Typography>
+                    </Grid>
+                    <Grid item xs={6} md={3}
+                          display="flex"
+                          flexDirection="row">
+                        <Typography variant="caption">
+                            Longitude: NN.NNNNN
+                        </Typography>
+                    </Grid>
                     <Grid item xs={12} md={12}>
                         <Typography variant="h3">
                             Miasto, Kraj
@@ -55,37 +79,10 @@ function ForecastHeader(props) {
                             Wind direction: SW
                         </Typography>
                     </Grid>
-                    <Grid item xs={6} md={3}
-                          display="flex"
-                          flexDirection="row">
-                        <Typography  variant="caption">
-                            Sunrise: HH:mm
-                        </Typography>
-                    </Grid>
-                    <Grid item xs={6} md={3}
-                          display="flex"
-                          flexDirection="row">
-                        <Typography variant="caption">
-                            Sunset: HH:mm
-                        </Typography>
-                    </Grid>
-                    <Grid item xs={6} md={3}
-                          flexDirection="row">
-                        <Typography variant="caption">
-                            Latitude: NN.NNNNN
-                        </Typography>
-                    </Grid>
-                    <Grid item xs={6} md={3}
-                          display="flex"
-                          flexDirection="row">
-                        <Typography variant="caption">
-                            Longitude: NN.NNNNN
-                        </Typography>
-                    </Grid>
                 </Grid>
             </CardContent>
         </Card>
     );
 }
 
-export default withStyles(styles)(ForecastHeader);
+export default ForecastHeader;
