@@ -6,7 +6,7 @@ import Typography from '@material-ui/core/Typography';
 import Link from "@material-ui/core/Link";
 import Grid from "@material-ui/core/Grid";
 import ForecastHeader from "./ForecastHeader";
-import ForecastTable from "./ForecastTable";
+import ForecastDays from "./ForecastDays";
 import ForecastChart from "./ForecastChart";
 
 
