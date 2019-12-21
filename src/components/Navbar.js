@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from "prop-types";
-import { withStyles } from "@material-ui/core/styles";
+import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
@@ -14,8 +14,8 @@ import Paper from '@material-ui/core/Paper';
 import InputBase from '@material-ui/core/InputBase';
 import classNames from 'classnames';
 
-const styles = {
-    root: {
+const useStyles = makeStyles(theme => ({
+    searchBg: {
         background: "rgba(255,255,255,0.12)"
     },
     whiteColor: {
@@ -24,16 +24,29 @@ const styles = {
     searchPadding: {
         paddingLeft: '1rem',
     },
+    toolbarSizing: {
+        height: '64px',
+    },
     marginY: {
         margin: '0.5rem',
     },
+    navPadding: {
+        [theme.breakpoints.down('xs')]: {
+            padding: '0',
+        }
+    },
     searchWidth: {
-        width: '150px',
+        [theme.breakpoints.down('md')]: {
+            width: '150px',
+        },
+        [theme.breakpoints.up('md')]: {
+            width: '200px',
+        }
     }
-};
+}));
 
-function Navbar(props) {
-    const { classes } = props;
+function Navbar() {
+    const classes = useStyles();
 
     const [anchorEl, setAnchorEl] = React.useState(null);
     const handleClick = event => {
@@ -45,7 +58,7 @@ function Navbar(props) {
 
     const searchCityInput = () => {
         return (
-            <Paper component="form" className={classNames(classes.root, classes.searchPadding)}>
+            <Paper component="form" className={classNames(classes.searchBg, classes.searchPadding)}>
                 <InputBase
                     className={classNames(classes.whiteColor, classes.searchWidth)}
                     placeholder="Search city"
@@ -86,11 +99,12 @@ function Navbar(props) {
     }
 
     return (
-        <AppBar>
-            <Container style={{padding: '0px'}} maxWidth="md">
-                <Toolbar>
+        <AppBar className={classes.navPadding}>
+            <Container className={classes.navPadding} maxWidth="md">
+                <Toolbar className={classes.toolbarSizing}>
                     <Grid
                         container
+                        maxWidth="md"
                         direction="row"
                         justify="space-between"
                         alignItems="center">
@@ -107,4 +121,4 @@ Navbar.propTypes = {
     classes: PropTypes.object.isRequired
 };
 
-export default withStyles(styles)(Navbar);
+export default Navbar;
