@@ -1,7 +1,7 @@
 import React from 'react';
 import Grid from '@material-ui/core/Grid';
 import ForecastHeader from "./ForecastHeader";
-import ForecastDays from "./ForecastDays";
+import ForecastCards from "./ForecastCards";
 import ForecastChart from "./ForecastChart";
 import Container from "@material-ui/core/Container";
 import { makeStyles } from '@material-ui/core/styles';
@@ -41,7 +41,7 @@ function Body(props) {
                 maxWidth="md"
                 className={classNames(classes.bgColor, classes.bodyPadding, classes.marginB)}>
                 <ForecastHeader currentWeatherInCity = {props.currentWeatherInCity} />
-                <ForecastDays/>
+                <ForecastCards forecastWeatherForCity={props.forecastWeatherForCity} />
                 <ForecastChart/>
             </Container>
         </Grid>

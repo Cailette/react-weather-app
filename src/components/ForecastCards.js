@@ -10,6 +10,9 @@ const useStyles = makeStyles(theme => ({
     marginB: {
         marginBottom: '1rem',
     },
+    marginL: {
+        marginLeft: '1rem',
+    },
     paperPadding: {
         padding: '1rem',
         margin: '0.5rem 0'
@@ -23,56 +26,48 @@ function createData(weekday, date, humidity, weatherCondition, windSpeed, winDir
     return { weekday, date, humidity, weatherCondition, windSpeed, winDirection, temperatureMin, temperatureMax, img };
 }
 
-const rows = [
-    createData('Monday', '23/12/19', 6.0,
-        'rainy', 4, 'SE', 6, 17),
-    createData('Thursday', '24/12/19', 16.0,
-        'rainy', 6, 'NE', 7,18),
-    createData('Wednesday', '25/12/19', 9.0,
-        'cloudly', 4, 'NE', 8, 18),
-    createData('Tuesday', '26/12/19', 3.7,
-        'rainy', 4, 'N', 4, 15),
-    createData('Friday', '27/12/19', 16.0,
-        'sunny', 3, 'SW', 4, 12),
-];
-
-function ForecastDays() {
+function ForecastCards(props) {
     const classes = useStyles();
 
-    const generateForecast = (rows) => {
-        return rows.map(item => (
+    const generateForecast = () => {
+        return props.forecastWeatherForCity.map(item => (
             <Paper key={item.date} className={classNames(classes.root, classes.paperPadding)}>
                 <Grid
                     container
                     spacing={3}
                     alignItems="center">
                     <Grid item xs={6} md={4}>
-                        <Typography variant="h6" gutterBottom>
-                            {item.weekday}
+                        {/*<Typography variant="h6" gutterBottom>*/}
+                        {/*    {item.weekday}*/}
+                        {/*</Typography>*/}
+                        <Typography variant="h5">
+                            {item.date.slice(11, 16)}
                         </Typography>
-                        <Typography variant="subtitle2">
-                            {item.date}
-                        </Typography>
-                    </Grid>
-                    <Grid item xs={6} md={4}>
                         <Typography gutterBottom>
                             Conditions: {item.weatherCondition}
                         </Typography>
+                    </Grid>
+                    <Grid item xs={12} md={4}>
+                        <Grid
+                            container
+                            direction="row"
+                            justify="flex-start"
+                            alignItems="center">
+                            <Typography variant="h4" >
+                                {item.temperature}&deg;
+                            </Typography>
+                            <Typography variant="subtitle1" className={classes.marginL}>
+                                Feel {item.temperatureFeel}&deg;
+                            </Typography>
+                            <img src={"https://openweathermap.org/img/wn/" + item.img + ".png"} alt="weather icon" />
+                        </Grid>
+                    </Grid>
+                    <Grid item xs={6} md={4}>
+                        <Typography gutterBottom>
+                            Pressure: {item.pressure}hPa
+                        </Typography>
                         <Typography>
                             Humidity: {item.humidity}%
-                        </Typography>
-                    </Grid>
-                    <Grid item xs={6} md={2}>
-                        <Typography>
-                            IMG
-                        </Typography>
-                    </Grid>
-                    <Grid item xs={6} md={2}>
-                        <Typography variant="h6" display="inline">
-                            {item.temperatureMin}&deg;C
-                        </Typography>
-                        <Typography variant="h4" display="inline">
-                            {item.temperatureMax}&deg;C
                         </Typography>
                     </Grid>
                 </Grid>
@@ -84,11 +79,11 @@ function ForecastDays() {
             display="flex"
             className={classNames(classes.marginB, classes.zeroPadding)}>
             <Typography variant="h4">
-                Daily Forecast:
+                Forecast:
             </Typography>
-            {generateForecast(rows)}
+            { props.forecastWeatherForCity ? generateForecast() : 'Loading...' }
         </Container>
     );
 }
 
-export default ForecastDays;
+export default ForecastCards;
