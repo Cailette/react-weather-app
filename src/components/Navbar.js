@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from "prop-types";
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import MenuIcon from '@material-ui/icons/Menu';
@@ -104,7 +103,6 @@ function Navbar() {
                 <Toolbar className={classes.toolbarSizing}>
                     <Grid
                         container
-                        maxWidth="md"
                         direction="row"
                         justify="space-between"
                         alignItems="center">
@@ -116,9 +114,5 @@ function Navbar() {
         </AppBar>
     );
 }
-
-Navbar.propTypes = {
-    classes: PropTypes.object.isRequired
-};
 
 export default Navbar;

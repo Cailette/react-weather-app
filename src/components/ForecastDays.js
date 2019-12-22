@@ -1,15 +1,10 @@
 import React from 'react';
 import Container from '@material-ui/core/Container';
 import Paper from '@material-ui/core/Paper';
-import {withStyles} from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import classNames from 'classnames';
 import {makeStyles} from "@material-ui/core/styles";
-
-import ForecastHeader from "./ForecastHeader";
-import ForecastChart from "./ForecastChart";
 import Grid from "@material-ui/core/Grid";
-import CardContent from "@material-ui/core/CardContent";
 
 const useStyles = makeStyles(theme => ({
     marginB: {
@@ -46,7 +41,7 @@ function ForecastDays() {
 
     const generateForecast = (rows) => {
         return rows.map(item => (
-            <Paper className={classNames(classes.root, classes.paperPadding)}>
+            <Paper key={item.date} className={classNames(classes.root, classes.paperPadding)}>
                 <Grid
                     container
                     spacing={3}
@@ -87,8 +82,6 @@ function ForecastDays() {
     return (
         <Container
             display="flex"
-            flexDirection="row"
-            alignItems="center"
             className={classNames(classes.marginB, classes.zeroPadding)}>
             <Typography variant="h4">
                 Daily Forecast:

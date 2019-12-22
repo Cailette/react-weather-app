@@ -1,14 +1,9 @@
 import React from 'react';
 import Container from "@material-ui/core/Container";
 import { makeStyles } from '@material-ui/core/styles';
-import classNames from 'classnames';
 import Typography from '@material-ui/core/Typography';
 import Link from "@material-ui/core/Link";
 import Grid from "@material-ui/core/Grid";
-import ForecastHeader from "./ForecastHeader";
-import ForecastDays from "./ForecastDays";
-import ForecastChart from "./ForecastChart";
-
 
 const useStyles = makeStyles(theme => ({
     footerPadding: {
@@ -26,7 +21,7 @@ function Footer() {
                 container
                 spacing={3}
                 justify="center"
-            className={classes.footerPadding}>
+                className={classes.footerPadding}>
                 <Grid item>
                     <Typography variant="caption">
                         Iwona Wojtaszek
@@ -34,14 +29,14 @@ function Footer() {
                 </Grid>
                 <Grid item>
                     <Typography variant="caption">
-                        <Link href="https://openweathermap.org/api" onClick={preventDefault}>
+                        <Link target="_blank" href="https://openweathermap.org/api">
                             GitHub
                         </Link>
                     </Typography>
                 </Grid>
                 <Grid item>
                     <Typography variant="caption">
-                        <Link href="https://openweathermap.org/api" onClick={preventDefault}>
+                        <Link target="_blank" href="https://openweathermap.org/api">
                             Weather API
                         </Link>
                     </Typography>

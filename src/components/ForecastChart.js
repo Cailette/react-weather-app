@@ -1,11 +1,8 @@
 import React from 'react';
-import Container from '@material-ui/core/Container';
 import { LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip } from 'recharts';
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
-import Typography from "@material-ui/core/Typography";
 import {makeStyles} from "@material-ui/core/styles";
-import classNames from 'classnames';
 
 const useStyles = makeStyles(theme => ({
     marginB: {

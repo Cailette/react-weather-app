@@ -5,6 +5,7 @@ import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import classNames from 'classnames';
 import {makeStyles} from "@material-ui/core/styles";
+import CardMedia from '@material-ui/core/CardMedia';
 
 const useStyles = makeStyles(theme => ({
     marginB: {
@@ -16,70 +17,81 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-function ForecastHeader() {
+function ForecastHeader(props) {
     const classes = useStyles();
 
-    return (
-        <Card className={classNames(classes.marginB, classes.root)}>
-            <CardContent>
+    const renderCurrentWeatherData = (rows) => {
+        const href = "https://openweathermap.org/img/wn/" + props.currentWeatherInCity.img + "@2x.png";
+        return (
+            <div>
                 <Grid container spacing={3}>
                     <Grid item xs={6} md={3}
-                          display="flex"
-                          flexDirection="row">
+                          display="flex">
                         <Typography  variant="caption">
-                            Sunrise: HH:mm
+                            Sunrise: {props.currentWeatherInCity.sunrise}
                         </Typography>
                     </Grid>
                     <Grid item xs={6} md={3}
-                          display="flex"
-                          flexDirection="row">
+                          display="flex">
                         <Typography variant="caption">
-                            Sunset: HH:mm
+                            Sunset: {props.currentWeatherInCity.sunrise}
+                        </Typography>
+                    </Grid>
+                    <Grid item xs={6} md={3}>
+                        <Typography variant="caption">
+                            Latitude: {props.currentWeatherInCity.lat}
                         </Typography>
                     </Grid>
                     <Grid item xs={6} md={3}
-                          flexDirection="row">
+                          display="flex">
                         <Typography variant="caption">
-                            Latitude: NN.NNNNN
-                        </Typography>
-                    </Grid>
-                    <Grid item xs={6} md={3}
-                          display="flex"
-                          flexDirection="row">
-                        <Typography variant="caption">
-                            Longitude: NN.NNNNN
+                            Longitude: {props.currentWeatherInCity.lon}
                         </Typography>
                     </Grid>
                     <Grid item xs={12} md={12}>
                         <Typography variant="h3">
-                            Miasto, Kraj
+                            {props.currentWeatherInCity.city}, {props.currentWeatherInCity.countryCode}
                         </Typography>
                     </Grid>
+                    <Grid item xs={6} md={2}>
+                        <Typography variant="h4">
+                            {props.currentWeatherInCity.temperature}&deg;
+                        </Typography>
+                        <Typography variant="subtitle1">
+                            Feel {props.currentWeatherInCity.temperatureFeel}&deg;
+                        </Typography>
+                    </Grid>
+                    <Grid item xs={6} md={2}>
+                        <img src={href} alt="weather icon" />
+                    </Grid>
                     <Grid item xs={12} md={4}>
-                        <Typography variant="h4" gutterBottom>
-                            N&deg;
+                        <Typography gutterBottom>
+                            Conditions: {props.currentWeatherInCity.weatherCondition}
+                        </Typography>
+                        <Typography gutterBottom>
+                            Pressure: {props.currentWeatherInCity.pressure} hPa
                         </Typography>
                         <Typography>
-                            Img
+                            Humidity: {props.currentWeatherInCity.humidity} %
                         </Typography>
                     </Grid>
                     <Grid item xs={12} md={4}>
                         <Typography gutterBottom>
-                            Conditions: rainy
+                            Wind speed: {props.currentWeatherInCity.windSpeed} km/h
                         </Typography>
                         <Typography>
-                            Humidity: 20%
-                        </Typography>
-                    </Grid>
-                    <Grid item xs={12} md={4}>
-                        <Typography gutterBottom>
-                            Wind speed: 11 km/h
-                        </Typography>
-                        <Typography>
-                            Wind direction: SW
+                            Wind direction: {props.currentWeatherInCity.windDirection}&deg;
                         </Typography>
                     </Grid>
                 </Grid>
+            </div>
+        );
+    };
+
+    return (
+        <Card className={classNames(classes.marginB, classes.root)}>
+            <CardContent>
+                {props.currentWeatherInCity ? renderCurrentWeatherData() : "Loading..."}
             </CardContent>
         </Card>
     );

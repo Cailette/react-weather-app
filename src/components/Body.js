@@ -6,8 +6,6 @@ import ForecastChart from "./ForecastChart";
 import Container from "@material-ui/core/Container";
 import { makeStyles } from '@material-ui/core/styles';
 import classNames from 'classnames';
-import Card from "@material-ui/core/Card";
-
 
 const useStyles = makeStyles(theme => ({
     marginB: {
@@ -27,7 +25,7 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-function Body() {
+function Body(props) {
     const classes = useStyles();
 
     return (
@@ -39,11 +37,10 @@ function Body() {
             className={classes.bodyPadding}>
             <Container
                 display="flex"
-                flexDirection="row"
+                display="flex"
                 maxWidth="md"
-                alignItems="center"
                 className={classNames(classes.bgColor, classes.bodyPadding, classes.marginB)}>
-                <ForecastHeader/>
+                <ForecastHeader currentWeatherInCity = {props.currentWeatherInCity} />
                 <ForecastDays/>
                 <ForecastChart/>
             </Container>
