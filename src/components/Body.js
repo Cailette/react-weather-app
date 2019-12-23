@@ -40,8 +40,8 @@ function Body(props) {
                 display="flex"
                 maxWidth="md"
                 className={classNames(classes.bgColor, classes.bodyPadding, classes.marginB)}>
-                <ForecastHeader currentWeatherInCity = {props.currentWeatherInCity} />
-                <ForecastCards forecastWeatherForCity={props.forecastWeatherForCity} />
+                <ForecastHeader currentWeatherInCity = {props.currentWeatherInCity}/>
+                <ForecastCards forecastWeatherForCity = {props.forecastWeatherForCity} />
                 {/*<ForecastChart/>*/}
             </Container>
         </Grid>

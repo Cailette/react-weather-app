@@ -13,7 +13,6 @@ const useStyles = makeStyles(theme => ({
 
 function Footer() {
     const classes = useStyles();
-    const preventDefault = event => event.preventDefault();
 
     return (
         <Container>

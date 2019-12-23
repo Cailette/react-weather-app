@@ -22,8 +22,8 @@ class currentWeatherInCity {
         this.countryCode = countryCode;
         this.lat = lat;
         this.lon = lon;
-        this.sunrise = moment(sunrise).format('hh:mm');
-        this.sunset = moment(sunset).format('hh:mm');
+        this.sunrise = moment.unix(sunrise).local().format('HH:mm');
+        this.sunset = moment.unix(sunset).local().format('HH:mm');
         this.weekday = moment(date).format('dddd');
         this.date = moment(date).format('DD/MM/YY');
         this.pressure = pressure;

@@ -52,22 +52,40 @@ function ForecastHeader(props) {
                 <Grid container spacing={3}>
                     <Grid item xs={6} md={3}>
                         <Typography  variant="caption" className={classes.centerVertically}>
-                            <Brightness1OutlinedIcon fontSize="small"  className={classes.marginR2}/> Sunrise: {props.currentWeatherInCity.sunrise}
+                            <Brightness1OutlinedIcon
+                                fontSize="small"
+                                className={classes.marginR2}/>
+                                Sunrise: {props.currentWeatherInCity.sunrise}
                         </Typography>
                     </Grid>
                     <Grid item xs={6} md={3}>
-                        <Typography variant="caption" className={classes.centerVertically}>
-                            <Brightness2OutlinedIcon fontSize="small"  className={classes.marginR2}/> Sunset: {props.currentWeatherInCity.sunrise}
+                        <Typography
+                            variant="caption"
+                            className={classes.centerVertically}>
+                            <Brightness2OutlinedIcon
+                                fontSize="small"
+                                className={classes.marginR2}/>
+                                Sunset: {props.currentWeatherInCity.sunset}
                         </Typography>
                     </Grid>
                     <Grid item xs={6} md={3} >
-                        <Typography variant="caption" className={classes.centerVertically}>
-                            <PanoramaHorizontalOutlinedIcon fontSize="small"  className={classes.marginR2}/>  Latitude: {props.currentWeatherInCity.lat}
+                        <Typography
+                            variant="caption"
+                            className={classes.centerVertically}>
+                            <PanoramaHorizontalOutlinedIcon
+                                fontSize="small"
+                                className={classes.marginR2}/>
+                                Latitude: {props.currentWeatherInCity.lat}
                         </Typography>
                     </Grid>
                     <Grid item xs={6} md={3}>
-                        <Typography variant="caption" className={classes.centerVertically}>
-                            <PanoramaVerticalOutlinedIcon fontSize="small"  className={classes.marginR2}/> Longitude: {props.currentWeatherInCity.lon}
+                        <Typography
+                            variant="caption"
+                            className={classes.centerVertically}>
+                            <PanoramaVerticalOutlinedIcon
+                                fontSize="small"
+                                className={classes.marginR2}/>
+                                Longitude: {props.currentWeatherInCity.lon}
                         </Typography>
                     </Grid>
                     <Grid item xs={12} md={12}>
@@ -84,29 +102,54 @@ function ForecastHeader(props) {
                             <Typography variant="h3" >
                                 {props.currentWeatherInCity.temperature}&deg;
                             </Typography>
-                            <Typography variant="subtitle1" className={classes.marginL}>
+                            <Typography
+                                variant="subtitle1"
+                                className={classes.marginL}>
                                 Feel {props.currentWeatherInCity.temperatureFeel}&deg;
                             </Typography>
                             <img src={href} alt="weather icon" />
                         </Grid>
                     </Grid>
                     <Grid item xs={12} md={4}>
-                        <Typography gutterBottom className={classes.centerVertically}>
-                            <InfoOutlinedIcon fontSize="small"  className={classes.marginR}/>  Conditions: {props.currentWeatherInCity.weatherCondition}
+                        <Typography
+                            gutterBottom
+                            className={classes.centerVertically}>
+                            <InfoOutlinedIcon
+                                fontSize="small"
+                                className={classes.marginR}/>
+                                Conditions: {props.currentWeatherInCity.weatherCondition}
                         </Typography>
-                        <Typography gutterBottom className={classes.centerVertically}>
-                            <UnfoldLessOutlinedIcon fontSize="small"  className={classes.marginR}/> Pressure: {props.currentWeatherInCity.pressure}hPa
+                        <Typography
+                            gutterBottom
+                            className={classes.centerVertically}>
+                            <UnfoldLessOutlinedIcon
+                                fontSize="small"
+                                className={classes.marginR}/>
+                                Pressure: {props.currentWeatherInCity.pressure}hPa
                         </Typography>
-                        <Typography className={classes.centerVertically}>
-                            <WavesOutlinedIcon fontSize="small"  className={classes.marginR}/> Humidity: {props.currentWeatherInCity.humidity}%
+                        <Typography
+                            className={classes.centerVertically}>
+                            <WavesOutlinedIcon
+                                fontSize="small"
+                                className={classes.marginR}/>
+                                Humidity: {props.currentWeatherInCity.humidity}%
                         </Typography>
                     </Grid>
                     <Grid item xs={12} md={4}>
-                        <Typography gutterBottom className={classes.centerVertically}>
-                            <ArrowForwardOutlinedIcon fontSize="small"  className={classes.marginR}/> Wind speed: {props.currentWeatherInCity.windSpeed}km/h
+                        <Typography
+                            gutterBottom
+                            className={classes.centerVertically}>
+                            <ArrowForwardOutlinedIcon
+                                fontSize="small"
+                                className={classes.marginR}/>
+                                Wind speed: {props.currentWeatherInCity.windSpeed}km/h
                         </Typography>
-                        <Typography className={classes.centerVertically}>
-                            <CallMadeOutlinedIcon fontSize="small"  className={classes.marginR}/> Wind direction: {props.currentWeatherInCity.windDirection}&deg;
+                        <Typography
+                            className={classes.centerVertically}>
+                            <CallMadeOutlinedIcon
+                                fontSize="small"
+                                className={classes.marginR}/>
+                                Wind direction: {props.currentWeatherInCity.windDirection}&deg;
                         </Typography>
                     </Grid>
                 </Grid>

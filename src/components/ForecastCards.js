@@ -5,7 +5,6 @@ import Typography from "@material-ui/core/Typography";
 import classNames from 'classnames';
 import {makeStyles} from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
-import Box from "@material-ui/core/Box";
 const moment = require('moment');
 
 const useStyles = makeStyles(theme => ({
@@ -14,6 +13,9 @@ const useStyles = makeStyles(theme => ({
     },
     marginL: {
         marginLeft: '1rem',
+    },
+    textPadding: {
+        padding: '1.5rem 1rem',
     },
     paperPadding: {
         padding: '1rem',
@@ -46,10 +48,17 @@ function ForecastCards(props) {
         const uniqueDays = getUniqueDays();
         return uniqueDays.map(day => (
             <div key={day.date}>
-                <Typography variant="h5" display="inline">
-                    { moment(day.date).isoWeekday() === (new Date).getDay() ? "Today" : day.weekday }
+                <Typography
+                    variant="h5"
+                    display="inline"
+                    className={classes.textPadding}>
+                    { moment(day.date).isoWeekday() === (new Date).getDay()
+                        ? "Today"
+                        : day.weekday }
                 </Typography>
-                <Typography variant="h6" className={classes.marginL} display="inline">
+                <Typography
+                    variant="h6"
+                    display="inline">
                     {day.date}
                 </Typography>
                 {
@@ -66,7 +75,9 @@ function ForecastCards(props) {
 
         const generateForecastForWeekDay = (forecastWeatherForDay) => {
             return forecastWeatherForDay.map(item => (
-                <Paper key={item.date + "" + item.hour} className={classNames(classes.root, classes.paperPadding)}>
+                <Paper
+                    key={item.date + "" + item.hour}
+                    className={classNames(classes.root, classes.paperPadding)}>
                     <Grid
                         container
                         spacing={3}
@@ -88,7 +99,9 @@ function ForecastCards(props) {
                             </Typography>
                         </Grid>
                         <Grid item xs={6} md={2}>
-                            <img src={"https://openweathermap.org/img/wn/" + item.img + "@2x.png"} alt="weather icon" />
+                            <img
+                                src={"https://openweathermap.org/img/wn/" + item.img + "@2x.png"}
+                                alt="weather icon" />
                         </Grid>
                         <Grid item xs={6} md={2}>
                             <Grid
@@ -99,7 +112,9 @@ function ForecastCards(props) {
                                 <Typography variant="h4" >
                                     {item.temperature}&deg;
                                 </Typography>
-                                <Typography variant="subtitle1" className={classes.marginL}>
+                                <Typography
+                                    variant="subtitle1"
+                                    className={classes.marginL}>
                                     Feel {item.temperatureFeel}&deg;
                                 </Typography>
                             </Grid>
@@ -112,9 +127,6 @@ function ForecastCards(props) {
         <Container
             display="flex"
             className={classNames(classes.marginB, classes.zeroPadding)}>
-            <Typography variant="h4">
-                Forecast:
-            </Typography>
             { props.forecastWeatherForCity ? generateForecast() : 'Loading...' }
         </Container>
     );

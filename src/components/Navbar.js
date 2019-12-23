@@ -44,7 +44,9 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-function Navbar() {
+function Navbar(props) {
+    const preventDefault = event => event.preventDefault();
+    const [searchCity, setSearchCity] = React.useState('');
     const classes = useStyles();
 
     const [anchorEl, setAnchorEl] = React.useState(null);
@@ -55,6 +57,22 @@ function Navbar() {
         setAnchorEl(null);
     };
 
+    const searchChange = (event) => {
+        setSearchCity(event.target.value);
+    };
+
+    const searchByCity = (event) => {
+        if (event.key === 'Enter') {
+            search()
+            event.preventDefault();
+        }
+    }
+
+    const search = () => {
+        props.searchHandler(searchCity)
+        setSearchCity('');
+    }
+
     const searchCityInput = () => {
         return (
             <Paper component="form" className={classNames(classes.searchBg, classes.searchPadding)}>
@@ -62,8 +80,11 @@ function Navbar() {
                     className={classNames(classes.whiteColor, classes.searchWidth)}
                     placeholder="Search city"
                     inputProps={{ 'aria-label': 'search city' }}
+                    onChange={searchChange}
+                    onKeyPress={searchByCity}
+                    value={searchCity}
                 />
-                <IconButton type="submit" className={classes.iconButton} aria-label="search">
+                <IconButton onClick={search} className={classes.iconButton} aria-label="search">
                     <SearchIcon className={classes.whiteColor} />
                 </IconButton>
             </Paper>

@@ -6,6 +6,7 @@ import Footer from "./Footer";
 import weatherOpenAPI from "../axiosInstance";
 import currentWeatherInCity from "../models/currentWeatherInCity";
 import forecastWeatherForDay from "../models/forecastWeatherForDay";
+import ForecastHeader from "./ForecastHeader";
 
 const DEFAULT_GEOLOCATION = { LAT: 52.235470, LON: 21.041910}
 
@@ -16,6 +17,16 @@ const getWeatherByLatLon = async (lat, lon) => {
 
 const getForecastByLatLon = async (lat, lon) => {
     const response = await weatherOpenAPI.getForecastByLatLon(lat, lon).get();
+    return response.data;
+}
+
+const getWeatherByCity = async (city) => {
+    const response = await weatherOpenAPI.getWeatherByCity(city).get();
+    return response.data;
+}
+
+const getForecastByCity = async (city) => {
+    const response = await weatherOpenAPI.getForecastByCity(city).get();
     return response.data;
 }
 
@@ -47,11 +58,19 @@ export class Main extends React.Component {
     async getWeatherForGeolocation(lat, lon){
         let responseWeatherData = await getWeatherByLatLon(lat, lon);
         let responseForecastData = await getForecastByLatLon(lat, lon);
-        this.setCurrentWeatherData(responseWeatherData, lat, lon)
+        this.setCurrentWeatherData(responseWeatherData)
+        this.setForecastWeatherData(responseForecastData.list)
+    }
+
+    async getWeatherForCity(city){
+        let responseWeatherData = await getWeatherByCity(city);
+        let responseForecastData = await getForecastByCity(city);
+        this.setCurrentWeatherData(responseWeatherData)
         this.setForecastWeatherData(responseForecastData.list)
     }
 
     setCurrentWeatherData(currentWeatherData){
+        console.log(currentWeatherData.sys)
         this.setState({
             currentWeatherInCity: new currentWeatherInCity(
                 currentWeatherData.name,
@@ -86,20 +105,24 @@ export class Main extends React.Component {
                 forecast.main.temp
             ))
         }
-        console.log(forecastWeatherForCity)
         this.setState({forecastWeatherForCity: forecastWeatherForCity})
+    };
+
+    searchHandler(city){
+        this.getWeatherForCity(city)
     };
 
     render() {
         return (
             <Box component="div" width={1}>
                 <div style={{height: '64px'}} >
-                    <Navbar/>
+                    <Navbar
+                        searchHandler={this.searchHandler.bind(this)} />
                 </div>
                 <div style={{minHeight: 'calc(100vh - 64px)'}}>
                     <Body
                         currentWeatherInCity={this.state.currentWeatherInCity}
-                        forecastWeatherForCity={this.state.forecastWeatherForCity} />
+                        forecastWeatherForCity={this.state.forecastWeatherForCity}/>
                 </div>
                 <div style={{backgroundColor: '#eeeeee', minHeight: '50px'}} >
                     <Footer/>
