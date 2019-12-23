@@ -25,7 +25,7 @@ class currentWeatherInCity {
         this.sunrise = moment(sunrise).format('hh:mm');
         this.sunset = moment(sunset).format('hh:mm');
         this.weekday = moment(date).format('dddd');
-        this.date = moment(date).format('YYYY-MM-DD');
+        this.date = moment(date).format('DD/MM/YY');
         this.pressure = pressure;
         this.humidity = humidity;
         this.weatherCondition = weatherCondition;

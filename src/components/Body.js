@@ -42,7 +42,7 @@ function Body(props) {
                 className={classNames(classes.bgColor, classes.bodyPadding, classes.marginB)}>
                 <ForecastHeader currentWeatherInCity = {props.currentWeatherInCity} />
                 <ForecastCards forecastWeatherForCity={props.forecastWeatherForCity} />
-                <ForecastChart/>
+                {/*<ForecastChart/>*/}
             </Container>
         </Grid>
     );

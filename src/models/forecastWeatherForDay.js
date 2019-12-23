@@ -11,7 +11,8 @@ class forecastWeatherForDay {
         temperature
     ) {
         this.weekday = moment(date).format('dddd');
-        this.date = date;
+        this.date = moment(date).format('DD/MM/YY');
+        this.hour = moment(date).format('HH:mm');
         this.pressure = pressure;
         this.humidity = humidity;
         this.weatherCondition = weatherCondition;
