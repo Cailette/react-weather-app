@@ -6,7 +6,7 @@ import Footer from "./Footer";
 import weatherOpenAPI from "../axiosInstance";
 import currentWeatherInCity from "../models/currentWeatherInCity";
 import forecastWeatherForDay from "../models/forecastWeatherForDay";
-import ForecastHeader from "./ForecastHeader";
+import theme from './theme';
 
 const DEFAULT_GEOLOCATION = { LAT: 52.235470, LON: 21.041910}
 
@@ -124,7 +124,7 @@ export class Main extends React.Component {
                         currentWeatherInCity={this.state.currentWeatherInCity}
                         forecastWeatherForCity={this.state.forecastWeatherForCity}/>
                 </div>
-                <div style={{backgroundColor: '#eeeeee', minHeight: '50px'}} >
+                <div style={{backgroundColor: theme.palette.background.container, minHeight: '50px'}} >
                     <Footer/>
                 </div>
             </Box>

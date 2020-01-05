@@ -15,7 +15,7 @@ import classNames from 'classnames';
 
 const useStyles = makeStyles(theme => ({
     searchBg: {
-        background: "rgba(255,255,255,0.12)"
+        background: "rgba(255,255,255,0.2)"
     },
     whiteColor: {
         color: "white"
@@ -56,6 +56,18 @@ function Navbar(props) {
     const handleClose = () => {
         setAnchorEl(null);
     };
+
+    const themeChange = () => {
+        handleClose()
+        localStorage.setItem('theme', localStorage.getItem('theme') === 'light' ? 'dark' : 'light')
+        window.location.reload();
+    }
+
+    const unitChange = () => {
+        handleClose()
+        localStorage.setItem('unit', localStorage.getItem('unit') === 'C' ? 'F' : 'C')
+        window.location.reload();
+    }
 
     const searchChange = (event) => {
         setSearchCity(event.target.value);
@@ -105,13 +117,13 @@ function Navbar(props) {
                     onClose={handleClose}
                     style={{ marginTop:'50px' }}>
                     <MenuItem onClick={handleClose} disabled>
-                        Language
+                        EN language (PL)
                     </MenuItem>
-                    <MenuItem onClick={handleClose} disabled>
-                        Theme
+                    <MenuItem onClick={themeChange}>
+                        {localStorage.getItem('theme') === 'light' ? 'Light' : 'Dark'} theme ({localStorage.getItem('theme') === 'light' ? 'Dark' : 'Light'})
                     </MenuItem>
-                    <MenuItem onClick={handleClose} disabled>
-                        Unit
+                    <MenuItem onClick={unitChange}>
+                        {localStorage.getItem('unit') === 'C' ? 'Celsius' : 'Fahrenheit'} unit (&deg;{localStorage.getItem('unit') === 'C' ? 'F' : 'C'})
                     </MenuItem>
                 </Menu>
             </div>
@@ -119,7 +131,7 @@ function Navbar(props) {
     }
 
     return (
-        <AppBar className={classes.navPadding}>
+        <AppBar color="primary" className={classes.navPadding}>
             <Container className={classes.navPadding} maxWidth="md">
                 <Toolbar className={classes.toolbarSizing}>
                     <Grid

@@ -21,7 +21,7 @@ const useStyles = makeStyles(theme => ({
         }
     },
     bgColor: {
-        backgroundColor: '#eeeeee'
+        backgroundColor: theme.palette.background.container
     }
 }));
 

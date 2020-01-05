@@ -15,6 +15,7 @@ import UnfoldLessOutlinedIcon from '@material-ui/icons/UnfoldLessOutlined';
 import PanoramaHorizontalOutlinedIcon from '@material-ui/icons/PanoramaHorizontalOutlined';
 import PanoramaVerticalOutlinedIcon from '@material-ui/icons/PanoramaVerticalOutlined';
 
+
 const useStyles = makeStyles(theme => ({
     marginB: {
         marginBottom: '1rem',
@@ -29,9 +30,10 @@ const useStyles = makeStyles(theme => ({
         marginRight: '0.5rem',
     },
     root: {
-        background: "#3949ab",
-        color: "white"
+        backgroundColor: theme.palette.primary.dark,
+        color: theme.palette.primary.contrastText
     },
+
     maxHeight60: {
         maxHeight: '70px'
     },
@@ -100,7 +102,7 @@ function ForecastHeader(props) {
                             justify="flex-start"
                             alignItems="center" >
                             <Typography variant="h3" >
-                                {props.currentWeatherInCity.temperature}&deg;
+                                {props.currentWeatherInCity.temperature}&deg;{localStorage.getItem('unit') === 'C' ? 'C' : 'F'}
                             </Typography>
                             <Typography
                                 variant="subtitle1"
@@ -158,8 +160,8 @@ function ForecastHeader(props) {
     };
 
     return (
-        <Card className={classNames(classes.marginB, classes.root)}>
-            <CardContent>
+        <Card color="secondary" className={classNames(classes.marginB, classes.root)}>
+            <CardContent >
                 {props.currentWeatherInCity ? renderCurrentWeatherData() : "Loading..."}
             </CardContent>
         </Card>
