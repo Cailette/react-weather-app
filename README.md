@@ -32,8 +32,6 @@ Functionality
     <img src="./img/weather-app-2.png" width="500" >
 </p>
 <p align="center">
-    <img src="./img/weather-app-3.png" width="300" >
-</p>
-<p align="center">
-    <img src="./img/weather-app-4.png" width="300" >
+    <img src="./img/weather-app-3.png" width="250" >
+    <img src="./img/weather-app-4.png" width="250" >
 </p>
