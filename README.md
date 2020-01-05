@@ -26,10 +26,10 @@ Functionality
 5. The application is responsive and can be displayed on small devices like mobile phones.
 
 <p align="center">
-    <img src="./img/weather-app-1.png" width="500" >
+    <img src="./img/weather-app-1.png" width="550" >
 </p>
 <p align="center">
-    <img src="./img/weather-app-2.png" width="500" >
+    <img src="./img/weather-app-2.png" width="550" >
 </p>
 <p align="center">
     <img src="./img/weather-app-3.png" width="250" >
