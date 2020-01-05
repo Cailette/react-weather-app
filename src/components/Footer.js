@@ -28,7 +28,7 @@ function Footer() {
                 </Grid>
                 <Grid item>
                     <Typography variant="caption">
-                        <Link target="_blank" href="https://openweathermap.org/api">
+                        <Link target="_blank" href="https://github.com/Cailette/react-weather-app">
                             GitHub
                         </Link>
                     </Typography>
@@ -36,7 +36,7 @@ function Footer() {
                 <Grid item>
                     <Typography variant="caption">
                         <Link target="_blank" href="https://openweathermap.org/api">
-                            Weather API
+                            Open Weather API
                         </Link>
                     </Typography>
                 </Grid>
